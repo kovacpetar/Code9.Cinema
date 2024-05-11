@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddTransient<ICinemaRepository, CinemaRepository>();
+builder.Services.AddScoped<ICinemaRepository, CinemaRepository>();
 
 // Add services to the container.
 builder.Services.AddDbContext<CinemaDbContext>(options => options.UseInMemoryDatabase("Cinemas"));
