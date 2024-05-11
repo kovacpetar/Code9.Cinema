@@ -17,6 +17,12 @@ namespace Code9.API.Controllers
             return Results.Ok(await mediator.Send(new GetAllCinemaQuery()));
         }
 
+        [HttpGet(nameof(GetCinemaById))]
+        public async Task<IResult> GetCinemaById([AsParameters] Guid id)
+        {
+            return Results.Ok(await mediator.Send(new GetCinemaByIdQuery(id)));
+        }
+
         [HttpPost]
         public async Task<IResult> CreateCinema([FromBody] AddCinemaRequest request)
         {
@@ -29,7 +35,14 @@ namespace Code9.API.Controllers
         {
             var command = new UpdateCinemaCommand(Id, request.City, request.Name, request.Street, request.NumOfAuditoriums);
             await mediator.Send(command);
-            return Results.NoContent();
+            return Results.Ok();
+        }
+
+        [HttpDelete]
+        public async Task<IResult> DeleteCinema([AsParameters] Guid id)
+        {
+            await mediator.Send(new DeleteCinemaCommand(id));
+            return Results.Ok();
         }
     }
 }
