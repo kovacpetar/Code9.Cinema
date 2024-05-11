@@ -21,19 +21,14 @@ namespace Code9.Infrastructure.Repositories
         public async Task<Cinema> AddCinema(Cinema cinema)
         {
             var entityObject = await _dbContext.Cinemas.AddAsync(cinema);
+            await _dbContext.SaveChangesAsync();
+
             return entityObject.Entity;
         }
 
-        public async Task UpdateCinema(Guid id, string name, string city, string street)
+        public async Task UpdateCinema(Cinema cinema)
         {
-            var cinema = await _dbContext.Cinemas.FirstOrDefaultAsync(x => x.Id == id);
-
-            if (cinema is null) throw new ArgumentNullException($"Cinema with id: {id} could not be found.");
-
-            cinema.Name = name;
-            cinema.Street = street;
-            cinema.City = city;
-
+            _dbContext.Cinemas.Update(cinema);
             await _dbContext.SaveChangesAsync();
         }
     }
