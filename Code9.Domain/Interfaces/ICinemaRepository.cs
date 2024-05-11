@@ -6,6 +6,6 @@ namespace Code9.Domain.Interfaces
     {
         public Task<List<Cinema>> GetAllCinemas();
         Task<Cinema> AddCinema(Cinema cinema);
-        Task UpdateCinema(Guid id, string name, string city, string street);
+        Task UpdateCinema(Cinema cinema);
     }
 }
