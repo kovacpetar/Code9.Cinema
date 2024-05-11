@@ -17,5 +17,19 @@ namespace Code9.Infrastructure.Repositories
         {
             return await _dbContext.Cinemas.ToListAsync();
         }
+
+        public async Task<Cinema> AddCinema(Cinema cinema)
+        {
+            var entityObject = await _dbContext.Cinemas.AddAsync(cinema);
+            await _dbContext.SaveChangesAsync();
+
+            return entityObject.Entity;
+        }
+
+        public async Task UpdateCinema(Cinema cinema)
+        {
+            _dbContext.Cinemas.Update(cinema);
+            await _dbContext.SaveChangesAsync();
+        }
     }
 }
