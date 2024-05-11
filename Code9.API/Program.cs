@@ -3,7 +3,6 @@ using Code9.Domain.Interfaces;
 using Code9.Infrastructure;
 using Code9.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
-using System.Net.NetworkInformation;
 
 var builder = WebApplication.CreateBuilder(args);
 
