@@ -2,7 +2,6 @@
 using Code9.Domain.Handlers.Commands;
 using Code9.Domain.Handlers.Queries;
 using MediatR;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Code9.API.Controllers

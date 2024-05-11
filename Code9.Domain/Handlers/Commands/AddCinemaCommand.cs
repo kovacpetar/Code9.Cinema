@@ -5,9 +5,9 @@ using MediatR;
 namespace Code9.Domain.Handlers.Commands
 {
     public record AddCinemaCommand(
-        string City, 
-        string Name, 
-        string Street, 
+        string City,
+        string Name,
+        string Street,
         int NumOfAuditoriums) : IRequest<Cinema>;
 
     public class AddCinemaHandler : IRequestHandler<AddCinemaCommand, Cinema>
